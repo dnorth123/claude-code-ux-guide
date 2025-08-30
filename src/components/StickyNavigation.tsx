@@ -1,11 +1,14 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ChevronRight, Menu, X } from 'lucide-react';
 
 interface NavigationSection {
   id: string;
   title: string;
+  href?: string;
   subsections?: { id: string; title: string }[];
 }
 
@@ -19,6 +22,7 @@ export function StickyNavigation({ sections, className = '' }: StickyNavigationP
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,7 +55,14 @@ export function StickyNavigation({ sections, className = '' }: StickyNavigationP
     return () => window.removeEventListener('scroll', handleScroll);
   }, [sections]);
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId: string, href?: string) => {
+    // If it's an external link, navigate to it
+    if (href && href !== '/') {
+      setIsMobileMenuOpen(false);
+      return; // Let the Link component handle navigation
+    }
+    
+    // Otherwise, scroll to section on current page
     const element = document.getElementById(sectionId);
     if (element) {
       const offset = 100; // Account for sticky header
@@ -84,24 +95,43 @@ export function StickyNavigation({ sections, className = '' }: StickyNavigationP
           <div className="flex items-center justify-between h-14">
             {/* Desktop navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              {sections.map((section) => (
-                <button
-                  key={section.id}
-                  onClick={() => scrollToSection(section.id)}
-                  className={`
-                    text-sm font-medium transition-colors duration-200 hover:text-primary-600 relative
-                    ${activeSection === section.id 
-                      ? 'text-primary-600' 
-                      : 'text-slate-600'
-                    }
-                  `}
-                >
-                  {section.title}
-                  {activeSection === section.id && (
-                    <div className="absolute -bottom-3 left-0 right-0 h-0.5 bg-primary-600 rounded-full" />
-                  )}
-                </button>
-              ))}
+              {sections.map((section) => {
+                const isActive = (section.href && pathname === section.href) || activeSection === section.id;
+                
+                if (section.href && section.href !== '/') {
+                  return (
+                    <Link
+                      key={section.id}
+                      href={section.href}
+                      className={`
+                        text-sm font-medium transition-colors duration-200 hover:text-primary-600 relative
+                        ${isActive ? 'text-primary-600' : 'text-slate-600'}
+                      `}
+                    >
+                      {section.title}
+                      {isActive && (
+                        <div className="absolute -bottom-3 left-0 right-0 h-0.5 bg-primary-600 rounded-full" />
+                      )}
+                    </Link>
+                  );
+                }
+                
+                return (
+                  <button
+                    key={section.id}
+                    onClick={() => scrollToSection(section.id, section.href)}
+                    className={`
+                      text-sm font-medium transition-colors duration-200 hover:text-primary-600 relative
+                      ${isActive ? 'text-primary-600' : 'text-slate-600'}
+                    `}
+                  >
+                    {section.title}
+                    {isActive && (
+                      <div className="absolute -bottom-3 left-0 right-0 h-0.5 bg-primary-600 rounded-full" />
+                    )}
+                  </button>
+                );
+              })}
             </div>
 
             {/* Mobile menu button */}
@@ -144,26 +174,54 @@ export function StickyNavigation({ sections, className = '' }: StickyNavigationP
           <div id="mobile-navigation-menu" className="md:hidden border-t border-slate-200 bg-white">
             <div className="max-w-4xl mx-auto px-4 py-3">
               <div className="space-y-2">
-                {sections.map((section) => (
-                  <button
-                    key={section.id}
-                    onClick={() => scrollToSection(section.id)}
-                    className={`
-                      w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors
-                      ${activeSection === section.id
-                        ? 'bg-primary-50 text-primary-700'
-                        : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-                      }
-                    `}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span>{section.title}</span>
-                      {activeSection === section.id && (
-                        <ChevronRight className="w-4 h-4" />
-                      )}
-                    </div>
-                  </button>
-                ))}
+                {sections.map((section) => {
+                  const isActive = (section.href && pathname === section.href) || activeSection === section.id;
+                  
+                  if (section.href && section.href !== '/') {
+                    return (
+                      <Link
+                        key={section.id}
+                        href={section.href}
+                        className={`
+                          w-full block px-3 py-2 rounded-md text-sm font-medium transition-colors
+                          ${isActive
+                            ? 'bg-primary-50 text-primary-700'
+                            : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                          }
+                        `}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <div className="flex items-center justify-between">
+                          <span>{section.title}</span>
+                          {isActive && (
+                            <ChevronRight className="w-4 h-4" />
+                          )}
+                        </div>
+                      </Link>
+                    );
+                  }
+                  
+                  return (
+                    <button
+                      key={section.id}
+                      onClick={() => scrollToSection(section.id, section.href)}
+                      className={`
+                        w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors
+                        ${isActive
+                          ? 'bg-primary-50 text-primary-700'
+                          : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                        }
+                      `}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span>{section.title}</span>
+                        {isActive && (
+                          <ChevronRight className="w-4 h-4" />
+                        )}
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
