@@ -1,4 +1,4 @@
-import { Header, Section, FeatureCard, CalloutBox, CodeBlock, TabGroup } from '@/components';
+import { Header, Section, FeatureCard, CalloutBox, CodeBlock, TabGroup, Icon, SuccessIcon } from '@/components';
 import { Palette, Code, Brain, GitBranch, Database, Zap } from 'lucide-react';
 import Link from 'next/link';
 
@@ -6,22 +6,35 @@ export default function Home() {
   return (
     <>
         <Header 
-          title="🎨 Claude Code for UX Designers"
+          title="Claude Code for UX Designers"
           subtitle="Complete Application Development Guide with Full Stack Integration"
+          icon="design"
         />
 
       {/* Getting Started */}
-      <Section id="getting-started" title="🚀 Getting Started: Your First Claude Code Project">
+      <Section id="getting-started" title="Getting Started: Your First Claude Code Project" icon="launch">
         <div className="space-y-8">
           <CalloutBox type="highlight" title="Prerequisites Checklist">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h4 className="font-semibold mb-3">Required Accounts</h4>
                 <ul className="space-y-2 text-sm">
-                  <li>✅ Claude Pro subscription ($20/month)</li>
-                  <li>✅ GitHub account (free tier sufficient)</li>
-                  <li>✅ Vercel account (free tier: 100GB bandwidth)</li>
-                  <li>✅ Supabase account (free tier: 50MB database)</li>
+                  <li className="flex items-center">
+                    <SuccessIcon size="sm" className="mr-2" />
+                    Claude Pro subscription ($20/month)
+                  </li>
+                  <li className="flex items-center">
+                    <SuccessIcon size="sm" className="mr-2" />
+                    GitHub account (free tier sufficient)
+                  </li>
+                  <li className="flex items-center">
+                    <SuccessIcon size="sm" className="mr-2" />
+                    Vercel account (free tier: 100GB bandwidth)
+                  </li>
+                  <li className="flex items-center">
+                    <SuccessIcon size="sm" className="mr-2" />
+                    Supabase account (free tier: 50MB database)
+                  </li>
                 </ul>
               </div>
               <div>
@@ -38,7 +51,10 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-xl font-semibold mb-4">🎯 15-Minute Quick Start</h3>
+              <h3 className="text-xl font-semibold mb-4 flex items-center">
+                <Icon type="target" size="md" color="primary" className="mr-2" />
+                15-Minute Quick Start
+              </h3>
               <div className="space-y-3">
                 <div className="flex items-start space-x-3">
                   <span className="flex-shrink-0 w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center text-sm font-medium">1</span>
@@ -65,7 +81,10 @@ export default function Home() {
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold mb-4">💡 Your First Prompt</h3>
+              <h3 className="text-xl font-semibold mb-4 flex items-center">
+                <Icon type="tip" size="md" color="accent" className="mr-2" />
+                Your First Prompt
+              </h3>
               <CodeBlock
                 language="markdown"
                 filename="first-prompt.md"
@@ -99,7 +118,7 @@ Make it production-ready with proper TypeScript interfaces.`}
       </div>
 
       {/* Core Capabilities */}
-      <Section id="core-capabilities" title="🚀 Core Capabilities for UX Designers">
+      <Section id="core-capabilities" title="Core Capabilities for UX Designers" icon="launch">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <FeatureCard
             icon={Palette}
@@ -139,7 +158,7 @@ Make it production-ready with proper TypeScript interfaces.`}
       </Section>
 
       {/* Complete Development Stack */}
-      <Section id="development-stack" title="🔧 Complete Development Stack Integration" className="bg-white">
+      <Section id="development-stack" title="Complete Development Stack Integration" className="bg-white" icon="tool">
         <CalloutBox type="highlight" title="Production Pipeline Architecture">
           <p className="font-semibold text-lg mb-2">
             Build enterprise-grade applications using: <span className="text-primary-600">Figma → Claude Code → GitHub → Supabase → Vercel</span>
@@ -183,7 +202,7 @@ Make it production-ready with proper TypeScript interfaces.`}
       </Section>
 
       {/* Advanced Workflows */}
-      <Section id="advanced-workflows" title="🔬 Advanced Workflows for Design Systems" className="bg-white">
+      <Section id="advanced-workflows" title="Advanced Workflows for Design Systems" className="bg-white" icon="analytics">
         <div className="space-y-8">
           <CalloutBox type="info" title="Design System Integration">
             <p className="mb-4">
@@ -325,7 +344,7 @@ figmaTokens.watch(process.env.FIGMA_FILE_ID, syncDesignTokens);`}
       </Section>
 
       {/* Team Collaboration */}
-      <Section id="team-collaboration" title="👥 Team Collaboration & Handoff Automation">
+      <Section id="team-collaboration" title="Team Collaboration & Handoff Automation" icon="team">
         <div className="space-y-8">
           <div className="grid md:grid-cols-3 gap-6">
             <FeatureCard
@@ -386,7 +405,7 @@ gh api repos/:owner/:repo/collaborators/teammate2 -X PUT`}
       </Section>
 
       {/* Prompt Engineering Hub - Link to dedicated page */}
-      <Section id="prompt-engineering" title="🧠 Prompt Engineering Hub: Proven Templates">
+      <Section id="prompt-engineering" title="Prompt Engineering Hub: Proven Templates" icon="ai">
         <div className="space-y-8">
           <CalloutBox type="info" title="Comprehensive Prompt Library">
             <p className="mb-4">
@@ -402,7 +421,10 @@ gh api repos/:owner/:repo/collaborators/teammate2 -X PUT`}
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white rounded-lg border border-slate-200 p-6">
-              <h4 className="font-semibold mb-3 text-primary-700">🎨 Design-to-Code</h4>
+              <h4 className="font-semibold mb-3 text-primary-700 flex items-center">
+                <Icon type="design" size="sm" color="primary" className="mr-2" />
+                Design-to-Code
+              </h4>
               <p className="text-sm text-slate-600 mb-3">
                 High-fidelity conversion prompts with 95% accuracy rate for first iterations.
               </p>
@@ -412,7 +434,10 @@ gh api repos/:owner/:repo/collaborators/teammate2 -X PUT`}
             </div>
             
             <div className="bg-white rounded-lg border border-slate-200 p-6">
-              <h4 className="font-semibold mb-3 text-green-700">🔧 Debugging & Optimization</h4>
+              <h4 className="font-semibold mb-3 text-green-700 flex items-center">
+                <Icon type="tool" size="sm" color="success" className="mr-2" />
+                Debugging & Optimization
+              </h4>
               <p className="text-sm text-slate-600 mb-3">
                 Performance analysis and accessibility audit prompts for production quality.
               </p>
@@ -422,7 +447,10 @@ gh api repos/:owner/:repo/collaborators/teammate2 -X PUT`}
             </div>
             
             <div className="bg-white rounded-lg border border-slate-200 p-6">
-              <h4 className="font-semibold mb-3 text-blue-700">👥 Team Collaboration</h4>
+              <h4 className="font-semibold mb-3 text-blue-700 flex items-center">
+                <Icon type="team" size="sm" color="accent" className="mr-2" />
+                Team Collaboration
+              </h4>
               <p className="text-sm text-slate-600 mb-3">
                 Design review automation and handoff documentation generators.
               </p>
@@ -435,7 +463,7 @@ gh api repos/:owner/:repo/collaborators/teammate2 -X PUT`}
       </Section>
 
       {/* Troubleshooting - Link to dedicated page */}
-      <Section id="troubleshooting" title="🔧 Troubleshooting & Common Issues">
+      <Section id="troubleshooting" title="Troubleshooting & Common Issues" icon="tool">
         <div className="space-y-8">
           <CalloutBox type="info" title="Comprehensive Troubleshooting Guide">
             <p className="mb-4">
@@ -451,7 +479,10 @@ gh api repos/:owner/:repo/collaborators/teammate2 -X PUT`}
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white rounded-lg border border-slate-200 p-6">
-              <h4 className="font-semibold mb-3 text-amber-700">⚡ Performance Issues</h4>
+              <h4 className="font-semibold mb-3 text-amber-700 flex items-center">
+                <Icon type="performance" size="sm" color="warning" className="mr-2" />
+                Performance Issues
+              </h4>
               <p className="text-sm text-slate-600 mb-3">
                 Bundle size optimization, slow compilation fixes, and memory leak solutions.
               </p>
@@ -461,7 +492,10 @@ gh api repos/:owner/:repo/collaborators/teammate2 -X PUT`}
             </div>
             
             <div className="bg-white rounded-lg border border-slate-200 p-6">
-              <h4 className="font-semibold mb-3 text-red-700">🚨 Development Errors</h4>
+              <h4 className="font-semibold mb-3 text-red-700 flex items-center">
+                <Icon type="warning" size="sm" color="error" className="mr-2" />
+                Development Errors
+              </h4>
               <p className="text-sm text-slate-600 mb-3">
                 TypeScript errors, hydration mismatches, and module resolution problems.
               </p>
@@ -471,7 +505,10 @@ gh api repos/:owner/:repo/collaborators/teammate2 -X PUT`}
             </div>
             
             <div className="bg-white rounded-lg border border-slate-200 p-6">
-              <h4 className="font-semibold mb-3 text-purple-700">🤖 Claude Code Issues</h4>
+              <h4 className="font-semibold mb-3 text-purple-700 flex items-center">
+                <Icon type="ai" size="sm" color="primary" className="mr-2" />
+                Claude Code Issues
+              </h4>
               <p className="text-sm text-slate-600 mb-3">
                 Context limits, code generation inconsistencies, and dependency conflicts.
               </p>
@@ -484,7 +521,7 @@ gh api repos/:owner/:repo/collaborators/teammate2 -X PUT`}
       </Section>
 
       {/* Case Studies - Link to dedicated page */}
-      <Section id="case-studies" title="📊 Case Studies: Real-World Implementations">
+      <Section id="case-studies" title="Case Studies: Real-World Implementations" icon="analytics">
         <div className="space-y-8">
           <CalloutBox type="info" title="Proven Success Stories">
             <p className="mb-4">
@@ -500,7 +537,10 @@ gh api repos/:owner/:repo/collaborators/teammate2 -X PUT`}
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6">
-              <h4 className="font-semibold mb-3 text-indigo-700">🏢 Enterprise Migration</h4>
+              <h4 className="font-semibold mb-3 text-indigo-700 flex items-center">
+                <Icon type="building" size="sm" color="accent" className="mr-2" />
+                Enterprise Migration
+              </h4>
               <p className="text-sm text-slate-600 mb-3">
                 Legacy Angular.js → React in 2 months (66% time reduction)
               </p>
@@ -513,7 +553,10 @@ gh api repos/:owner/:repo/collaborators/teammate2 -X PUT`}
             </div>
             
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6">
-              <h4 className="font-semibold mb-3 text-emerald-700">🚀 Startup MVP</h4>
+              <h4 className="font-semibold mb-3 text-emerald-700 flex items-center">
+                <Icon type="launch" size="sm" color="success" className="mr-2" />
+                Startup MVP
+              </h4>
               <p className="text-sm text-slate-600 mb-3">
                 Solo designer built full SaaS in 48 hours
               </p>
@@ -526,7 +569,10 @@ gh api repos/:owner/:repo/collaborators/teammate2 -X PUT`}
             </div>
             
             <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6">
-              <h4 className="font-semibold mb-3 text-purple-700">🎨 Design System</h4>
+              <h4 className="font-semibold mb-3 text-purple-700 flex items-center">
+                <Icon type="design" size="sm" color="primary" className="mr-2" />
+                Design System
+              </h4>
               <p className="text-sm text-slate-600 mb-3">
                 Agency unified 50+ client systems in 3 weeks
               </p>
@@ -540,7 +586,10 @@ gh api repos/:owner/:repo/collaborators/teammate2 -X PUT`}
           </div>
 
           <div className="mt-8 bg-white rounded-lg border border-slate-200 p-6">
-            <h4 className="font-semibold mb-3">📈 Success Metrics Across All Projects</h4>
+            <h4 className="font-semibold mb-3 flex items-center">
+              <Icon type="analytics" size="sm" color="primary" className="mr-2" />
+              Success Metrics Across All Projects
+            </h4>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div>
                 <div className="text-2xl font-bold text-primary-600 mb-1">85%</div>
@@ -564,7 +613,7 @@ gh api repos/:owner/:repo/collaborators/teammate2 -X PUT`}
       </Section>
 
       {/* Code Examples */}
-      <Section id="code-examples" title="💻 Practical Code Examples">
+      <Section id="code-examples" title="Practical Code Examples" icon="code">
         <div className="space-y-8">
           <div>
             <h3 className="text-2xl font-semibold text-slate-900 mb-4">Example 1: Supabase Authentication Setup</h3>
@@ -683,7 +732,7 @@ jobs:
                 </a>
               </p>
               <p className="text-sm text-slate-400">
-                🚀 Generated with{' '}
+                Generated with{' '}
                 <a href="https://claude.ai/code" className="text-primary-400 hover:text-primary-300">
                   Claude Code
                 </a>

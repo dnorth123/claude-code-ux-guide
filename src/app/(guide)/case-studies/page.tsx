@@ -1,4 +1,4 @@
-import { Section, CalloutBox, CodeBlock } from '@/components';
+import { Section, CalloutBox, CodeBlock, Icon } from '@/components';
 import { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -36,7 +36,7 @@ export default function CaseStudiesPage() {
         </nav>
       </div>
 
-      <Section id="case-studies" title="📊 Case Studies: Real-World Implementations">
+      <Section id="case-studies" title="Case Studies: Real-World Implementations" icon="analytics">
         <div className="space-y-8">
           <CalloutBox type="info" title="About These Studies">
             <p>
@@ -46,7 +46,10 @@ export default function CaseStudiesPage() {
 
           <div className="grid gap-8">
             <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8">
-              <h3 className="text-2xl font-semibold mb-4">🏢 Enterprise Dashboard Migration</h3>
+              <h3 className="text-2xl font-semibold mb-4 flex items-center">
+                <Icon type="building" size="lg" color="accent" className="mr-3" />
+                Enterprise Dashboard Migration
+              </h3>
               <div className="mb-6">
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mb-2">
                   Enterprise • 6 months → 2 months • 66% time reduction
@@ -138,7 +141,10 @@ const designTokenSync = {
             </div>
 
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-8">
-              <h3 className="text-2xl font-semibold mb-4">🚀 Startup MVP: 0-to-Production in 48 Hours</h3>
+              <h3 className="text-2xl font-semibold mb-4 flex items-center">
+                <Icon type="launch" size="lg" color="success" className="mr-3" />
+                Startup MVP: 0-to-Production in 48 Hours
+              </h3>
               <div className="mb-6">
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mb-2">
                   Solo Designer • 48 hours • Full-stack SaaS
@@ -257,7 +263,10 @@ export function MetricCard({ title, value, change, icon: Icon }: MetricCardProps
             </div>
 
             <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-8">
-              <h3 className="text-2xl font-semibold mb-4">🎨 Design System Migration: Agency to Product</h3>
+              <h3 className="text-2xl font-semibold mb-4 flex items-center">
+                <Icon type="design" size="lg" color="primary" className="mr-3" />
+                Design System Migration: Agency to Product
+              </h3>
               <div className="mb-6">
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 mb-2">
                   Design Team • 3 weeks • Component Library
@@ -356,7 +365,10 @@ export const frameworks = {
           </div>
 
           <div className="mt-12">
-            <h3 className="text-xl font-semibold mb-6">📈 Success Patterns Across All Projects</h3>
+            <h3 className="text-xl font-semibold mb-6 flex items-center">
+              <Icon type="analytics" size="md" color="primary" className="mr-2" />
+              Success Patterns Across All Projects
+            </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="bg-white rounded-lg border border-slate-200 p-6 text-center">
                 <div className="text-3xl font-bold text-primary-600 mb-2">85%</div>
@@ -378,7 +390,10 @@ export const frameworks = {
           </div>
 
           <div className="mt-12">
-            <h3 className="text-xl font-semibold mb-6">🎯 Implementation Lessons</h3>
+            <h3 className="text-xl font-semibold mb-6 flex items-center">
+              <Icon type="target" size="md" color="primary" className="mr-2" />
+              Implementation Lessons
+            </h3>
             <div className="grid md:grid-cols-3 gap-6">
               <CalloutBox type="highlight" title="Start Small">
                 <p className="text-sm">

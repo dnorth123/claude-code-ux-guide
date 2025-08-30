@@ -4,11 +4,13 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronRight, Menu, X } from 'lucide-react';
+import { Icon, type IconType } from './IconSystem';
 
 interface NavigationSection {
   id: string;
   title: string;
   href?: string;
+  icon?: IconType;
   subsections?: { id: string; title: string }[];
 }
 
@@ -104,10 +106,18 @@ export function StickyNavigation({ sections, className = '' }: StickyNavigationP
                       key={section.id}
                       href={section.href}
                       className={`
-                        text-sm font-medium transition-colors duration-200 hover:text-primary-600 relative
+                        text-sm font-medium transition-colors duration-200 hover:text-primary-600 relative flex items-center
                         ${isActive ? 'text-primary-600' : 'text-slate-600'}
                       `}
                     >
+                      {section.icon && (
+                        <Icon 
+                          type={section.icon} 
+                          size="sm" 
+                          color={isActive ? 'primary' : 'muted'} 
+                          className="mr-1.5" 
+                        />
+                      )}
                       {section.title}
                       {isActive && (
                         <div className="absolute -bottom-3 left-0 right-0 h-0.5 bg-primary-600 rounded-full" />
@@ -121,10 +131,18 @@ export function StickyNavigation({ sections, className = '' }: StickyNavigationP
                     key={section.id}
                     onClick={() => scrollToSection(section.id, section.href)}
                     className={`
-                      text-sm font-medium transition-colors duration-200 hover:text-primary-600 relative
+                      text-sm font-medium transition-colors duration-200 hover:text-primary-600 relative flex items-center
                       ${isActive ? 'text-primary-600' : 'text-slate-600'}
                     `}
                   >
+                    {section.icon && (
+                      <Icon 
+                        type={section.icon} 
+                        size="sm" 
+                        color={isActive ? 'primary' : 'muted'} 
+                        className="mr-1.5" 
+                      />
+                    )}
                     {section.title}
                     {isActive && (
                       <div className="absolute -bottom-3 left-0 right-0 h-0.5 bg-primary-600 rounded-full" />
@@ -192,7 +210,17 @@ export function StickyNavigation({ sections, className = '' }: StickyNavigationP
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         <div className="flex items-center justify-between">
-                          <span>{section.title}</span>
+                          <div className="flex items-center">
+                            {section.icon && (
+                              <Icon 
+                                type={section.icon} 
+                                size="sm" 
+                                color={isActive ? 'primary' : 'muted'} 
+                                className="mr-2" 
+                              />
+                            )}
+                            <span>{section.title}</span>
+                          </div>
                           {isActive && (
                             <ChevronRight className="w-4 h-4" />
                           )}
@@ -214,7 +242,17 @@ export function StickyNavigation({ sections, className = '' }: StickyNavigationP
                       `}
                     >
                       <div className="flex items-center justify-between">
-                        <span>{section.title}</span>
+                        <div className="flex items-center">
+                          {section.icon && (
+                            <Icon 
+                              type={section.icon} 
+                              size="sm" 
+                              color={isActive ? 'primary' : 'muted'} 
+                              className="mr-2" 
+                            />
+                          )}
+                          <span>{section.title}</span>
+                        </div>
                         {isActive && (
                           <ChevronRight className="w-4 h-4" />
                         )}

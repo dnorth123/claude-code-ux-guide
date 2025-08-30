@@ -1,4 +1,4 @@
-import { Section, CalloutBox, CodeBlock } from '@/components';
+import { Section, CalloutBox, CodeBlock, Icon } from '@/components';
 import { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -36,7 +36,7 @@ export default function TroubleshootingPage() {
         </nav>
       </div>
 
-      <Section id="troubleshooting" title="🔧 Troubleshooting & Common Issues">
+      <Section id="troubleshooting" title="Troubleshooting & Common Issues" icon="tool">
         <div className="space-y-8">
           <CalloutBox type="info" title="Quick Help">
             <p>
@@ -46,7 +46,10 @@ export default function TroubleshootingPage() {
 
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-xl font-semibold mb-4">⚡ Performance Issues</h3>
+              <h3 className="text-xl font-semibold mb-4 flex items-center">
+                <Icon type="performance" size="md" color="warning" className="mr-2" />
+                Performance Issues
+              </h3>
               <div className="space-y-4">
                 <CalloutBox type="warning" title="Large Bundle Sizes">
                   <p className="mb-2"><strong>Problem:</strong> Initial JS bundle &gt; 500KB</p>
@@ -111,7 +114,10 @@ useEffect(() => {
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold mb-4">🚨 Development Errors</h3>
+              <h3 className="text-xl font-semibold mb-4 flex items-center">
+                <Icon type="warning" size="md" color="error" className="mr-2" />
+                Development Errors
+              </h3>
               <div className="space-y-4">
                 <CalloutBox type="error" title="TypeScript Errors">
                   <p className="mb-2"><strong>Common:</strong> Property &apos;X&apos; does not exist on type &apos;Y&apos;</p>
@@ -188,7 +194,10 @@ return <ClientOnlyContent />;`}
           </div>
 
           <div className="mt-12">
-            <h3 className="text-xl font-semibold mb-6">🔍 Claude Code Specific Issues</h3>
+            <h3 className="text-xl font-semibold mb-6 flex items-center">
+              <Icon type="ai" size="md" color="primary" className="mr-2" />
+              Claude Code Specific Issues
+            </h3>
             <div className="space-y-6">
               <CalloutBox type="warning" title="Claude Context Limits">
                 <p className="mb-2"><strong>Problem:</strong> Claude stops responding or loses context</p>
@@ -245,10 +254,16 @@ npm install react@18.2.0 @types/react@18.2.0`}
           </div>
 
           <div className="mt-12">
-            <h3 className="text-xl font-semibold mb-6">📊 Debugging Strategies</h3>
+            <h3 className="text-xl font-semibold mb-6 flex items-center">
+              <Icon type="analytics" size="md" color="primary" className="mr-2" />
+              Debugging Strategies
+            </h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-white rounded-lg border border-slate-200 p-6">
-                <h4 className="font-semibold mb-3 text-blue-700">🔍 Step-by-Step Debug</h4>
+                <h4 className="font-semibold mb-3 text-blue-700 flex items-center">
+                  <Icon type="search" size="sm" color="accent" className="mr-2" />
+                  Step-by-Step Debug
+                </h4>
                 <ol className="text-sm text-slate-600 space-y-1">
                   <li>1. Reproduce the issue consistently</li>
                   <li>2. Check browser console for errors</li>
@@ -259,7 +274,10 @@ npm install react@18.2.0 @types/react@18.2.0`}
               </div>
               
               <div className="bg-white rounded-lg border border-slate-200 p-6">
-                <h4 className="font-semibold mb-3 text-green-700">⚡ Performance Debug</h4>
+                <h4 className="font-semibold mb-3 text-green-700 flex items-center">
+                  <Icon type="performance" size="sm" color="success" className="mr-2" />
+                  Performance Debug
+                </h4>
                 <ol className="text-sm text-slate-600 space-y-1">
                   <li>1. Use React DevTools Profiler</li>
                   <li>2. Check Network tab for slow requests</li>
@@ -270,7 +288,10 @@ npm install react@18.2.0 @types/react@18.2.0`}
               </div>
               
               <div className="bg-white rounded-lg border border-slate-200 p-6">
-                <h4 className="font-semibold mb-3 text-purple-700">🎯 Claude Debug</h4>
+                <h4 className="font-semibold mb-3 text-purple-700 flex items-center">
+                  <Icon type="ai" size="sm" color="primary" className="mr-2" />
+                  Claude Debug
+                </h4>
                 <ol className="text-sm text-slate-600 space-y-1">
                   <li>1. Provide specific error messages</li>
                   <li>2. Include relevant code context</li>
@@ -283,7 +304,10 @@ npm install react@18.2.0 @types/react@18.2.0`}
           </div>
 
           <div className="mt-12">
-            <h3 className="text-xl font-semibold mb-6">🆘 Emergency Fixes</h3>
+            <h3 className="text-xl font-semibold mb-6 flex items-center">
+              <Icon type="alert" size="md" color="error" className="mr-2" />
+              Emergency Fixes
+            </h3>
             <div className="bg-red-50 border border-red-200 rounded-lg p-6">
               <h4 className="font-semibold mb-3 text-red-800">Production Down? Quick Fixes:</h4>
               <div className="space-y-4">

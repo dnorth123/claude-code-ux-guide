@@ -6,3 +6,5 @@ export { CodeBlock } from './CodeBlock';
 export { StickyNavigation } from './StickyNavigation';
 export { Accordion } from './Accordion';
 export { TabGroup } from './TabGroup';
+export { Icon, SuccessIcon, TipIcon, PerformanceIcon, AnalyticsIcon } from './IconSystem';
+export { SectionHeader, DesignSection, LaunchSection, ToolSection, TeamSection, AISection, AnalyticsSection, CodeSection } from './SectionHeader';
