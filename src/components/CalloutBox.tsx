@@ -1,7 +1,7 @@
 import React from 'react';
-import { LucideIcon, Info, CheckCircle, AlertTriangle, Zap } from 'lucide-react';
+import { LucideIcon, Info, CheckCircle, AlertTriangle, Zap, XCircle } from 'lucide-react';
 
-type CalloutType = 'info' | 'success' | 'warning' | 'highlight';
+type CalloutType = 'info' | 'success' | 'warning' | 'highlight' | 'error';
 
 interface CalloutBoxProps {
   type?: CalloutType;
@@ -44,6 +44,13 @@ const calloutConfig: Record<CalloutType, {
     borderColor: 'border-slate-200',
     iconColor: 'text-slate-600',
     titleColor: 'text-slate-900',
+  },
+  error: {
+    icon: XCircle,
+    bgColor: 'bg-red-50',
+    borderColor: 'border-red-200',
+    iconColor: 'text-red-600',
+    titleColor: 'text-red-900',
   },
 };
 
