@@ -1,13 +1,30 @@
-import { Header, Section, FeatureCard, CalloutBox, CodeBlock } from '@/components';
+import { Header, Section, FeatureCard, CalloutBox, CodeBlock, StickyNavigation } from '@/components';
 import { Palette, Code, Brain, GitBranch, Database, Zap } from 'lucide-react';
+
+const navigationSections = [
+  { id: 'core-capabilities', title: 'Core Capabilities' },
+  { id: 'development-stack', title: 'Development Stack' },
+  { id: 'code-examples', title: 'Code Examples' }
+];
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Header 
-        title="🎨 Claude Code for UX Designers"
-        subtitle="Complete Application Development Guide with Full Stack Integration"
-      />
+      <StickyNavigation sections={navigationSections} />
+      
+      {/* Skip to main content for accessibility */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-600 text-white px-4 py-2 rounded-md z-50"
+      >
+        Skip to main content
+      </a>
+      
+      <div id="main-content">
+        <Header 
+          title="🎨 Claude Code for UX Designers"
+          subtitle="Complete Application Development Guide with Full Stack Integration"
+        />
 
       {/* Executive Summary */}
       <div className="bg-primary-50 border-y border-primary-100">
@@ -24,7 +41,7 @@ export default function Home() {
       </div>
 
       {/* Core Capabilities */}
-      <Section title="🚀 Core Capabilities for UX Designers">
+      <Section id="core-capabilities" title="🚀 Core Capabilities for UX Designers">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <FeatureCard
             icon={Palette}
@@ -64,7 +81,7 @@ export default function Home() {
       </Section>
 
       {/* Complete Development Stack */}
-      <Section title="🔧 Complete Development Stack Integration" className="bg-white">
+      <Section id="development-stack" title="🔧 Complete Development Stack Integration" className="bg-white">
         <CalloutBox type="highlight" title="Production Pipeline Architecture">
           <p className="font-semibold text-lg mb-2">
             Build enterprise-grade applications using: <span className="text-primary-600">Figma → Claude Code → GitHub → Supabase → Vercel</span>
@@ -108,7 +125,7 @@ export default function Home() {
       </Section>
 
       {/* Code Examples */}
-      <Section title="💻 Practical Code Examples">
+      <Section id="code-examples" title="💻 Practical Code Examples">
         <div className="space-y-8">
           <div>
             <h3 className="text-2xl font-semibold text-slate-900 mb-4">Example 1: Supabase Authentication Setup</h3>
@@ -208,33 +225,34 @@ jobs:
         </div>
       </Section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-300 py-12 mt-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="mb-4">
-              Built with{' '}
-              <a href="https://nextjs.org" className="text-primary-400 hover:text-primary-300">
-                Next.js
-              </a>
-              {', '}
-              <a href="https://tailwindcss.com" className="text-primary-400 hover:text-primary-300">
-                Tailwind CSS
-              </a>
-              {', and '}
-              <a href="https://claude.ai/code" className="text-primary-400 hover:text-primary-300">
-                Claude Code
-              </a>
-            </p>
-            <p className="text-sm text-slate-400">
-              🚀 Generated with{' '}
-              <a href="https://claude.ai/code" className="text-primary-400 hover:text-primary-300">
-                Claude Code
-              </a>
-            </p>
+        {/* Footer */}
+        <footer className="bg-slate-900 text-slate-300 py-12 mt-24">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <p className="mb-4">
+                Built with{' '}
+                <a href="https://nextjs.org" className="text-primary-400 hover:text-primary-300">
+                  Next.js
+                </a>
+                {', '}
+                <a href="https://tailwindcss.com" className="text-primary-400 hover:text-primary-300">
+                  Tailwind CSS
+                </a>
+                {', and '}
+                <a href="https://claude.ai/code" className="text-primary-400 hover:text-primary-300">
+                  Claude Code
+                </a>
+              </p>
+              <p className="text-sm text-slate-400">
+                🚀 Generated with{' '}
+                <a href="https://claude.ai/code" className="text-primary-400 hover:text-primary-300">
+                  Claude Code
+                </a>
+              </p>
+            </div>
           </div>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </main>
   );
 }
